@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kkyu.finance.mapper.FinanceSalaryMapper">
+
+    <resultMap type="FinanceSalary" id="FinanceSalaryResult">
+        <result property="id"    column="id"    />
+        <result property="employeeId"    column="employee_id"    />
+        <result property="baseSalary"    column="base_salary"    />
+        <result property="bonus"    column="bonus"    />
+        <result property="deductions"    column="deductions"    />
+        <result property="netSalary"    column="net_salary"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectFinanceSalaryVo">
+        select id, employee_id, base_salary, bonus, deductions, net_salary, create_by, create_time, update_by, update_time, remark from finance_salary
+    </sql>
+
+    <select id="selectFinanceSalaryList" parameterType="FinanceSalary" resultMap="FinanceSalaryResult">
+        <include refid="selectFinanceSalaryVo"/>
+        <where>
+            <if test="employeeId != null "> and employee_id = #{employeeId}</if>
+            <if test="baseSalary != null "> and base_salary = #{baseSalary}</if>
+        </where>
+    </select>
+
+    <select id="selectFinanceSalaryById" parameterType="Long" resultMap="FinanceSalaryResult">
+        <include refid="selectFinanceSalaryVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertFinanceSalary" parameterType="FinanceSalary" useGeneratedKeys="true" keyProperty="id">
+        insert into finance_salary
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="employeeId != null">employee_id,</if>
+            <if test="baseSalary != null">base_salary,</if>
+            <if test="bonus != null">bonus,</if>
+            <if test="deductions != null">deductions,</if>
+            <if test="netSalary != null">net_salary,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="employeeId != null">#{employeeId},</if>
+            <if test="baseSalary != null">#{baseSalary},</if>
+            <if test="bonus != null">#{bonus},</if>
+            <if test="deductions != null">#{deductions},</if>
+            <if test="netSalary != null">#{netSalary},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updateFinanceSalary" parameterType="FinanceSalary">
+        update finance_salary
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="employeeId != null">employee_id = #{employeeId},</if>
+            <if test="baseSalary != null">base_salary = #{baseSalary},</if>
+            <if test="bonus != null">bonus = #{bonus},</if>
+            <if test="deductions != null">deductions = #{deductions},</if>
+            <if test="netSalary != null">net_salary = #{netSalary},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteFinanceSalaryById" parameterType="Long">
+        delete from finance_salary where id = #{id}
+    </delete>
+
+    <delete id="deleteFinanceSalaryByIds" parameterType="String">
+        delete from finance_salary where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
