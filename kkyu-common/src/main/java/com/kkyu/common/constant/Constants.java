@@ -1,15 +1,15 @@
 package com.kkyu.common.constant;
 
-import java.util.Locale;
 import io.jsonwebtoken.Claims;
+
+import java.util.Locale;
 
 /**
  * 通用常量信息
- * 
+ *
  * @author kkyu
  */
-public class Constants
-{
+public class Constants {
     /**
      * UTF-8 字符集
      */
@@ -158,6 +158,6 @@ public class Constants
     /**
      * 自动识别json对象白名单配置（仅允许解析的包名，范围越小越安全）
      */
-    public static final String[] JSON_WHITELIST_STR = { "org.springframework", "com.kkyu" };
+    public static final String[] JSON_WHITELIST_STR = {"org.springframework", "com.kkyu"};
 
 }

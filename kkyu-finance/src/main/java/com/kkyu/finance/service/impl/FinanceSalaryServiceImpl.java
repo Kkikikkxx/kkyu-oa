@@ -1,13 +1,13 @@
 package com.kkyu.finance.service.impl;
 
-import java.util.List;
-
 import com.kkyu.common.utils.DateUtils;
+import com.kkyu.finance.domain.FinanceSalary;
+import com.kkyu.finance.mapper.FinanceSalaryMapper;
+import com.kkyu.finance.service.IFinanceSalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.kkyu.finance.mapper.FinanceSalaryMapper;
-import com.kkyu.finance.domain.FinanceSalary;
-import com.kkyu.finance.service.IFinanceSalaryService;
+
+import java.util.List;
 
 /**
  * 薪资管理Service业务层处理
@@ -16,8 +16,7 @@ import com.kkyu.finance.service.IFinanceSalaryService;
  * @date 2025-02-11
  */
 @Service
-public class FinanceSalaryServiceImpl implements IFinanceSalaryService
-{
+public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
     @Autowired
     private FinanceSalaryMapper financeSalaryMapper;
 
@@ -28,8 +27,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService
      * @return 薪资管理
      */
     @Override
-    public FinanceSalary selectFinanceSalaryById(Long id)
-    {
+    public FinanceSalary selectFinanceSalaryById(Long id) {
         return financeSalaryMapper.selectFinanceSalaryById(id);
     }
 
@@ -40,8 +38,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService
      * @return 薪资管理
      */
     @Override
-    public List<FinanceSalary> selectFinanceSalaryList(FinanceSalary financeSalary)
-    {
+    public List<FinanceSalary> selectFinanceSalaryList(FinanceSalary financeSalary) {
         return financeSalaryMapper.selectFinanceSalaryList(financeSalary);
     }
 
@@ -52,8 +49,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService
      * @return 结果
      */
     @Override
-    public int insertFinanceSalary(FinanceSalary financeSalary)
-    {
+    public int insertFinanceSalary(FinanceSalary financeSalary) {
         financeSalary.setCreateTime(DateUtils.getNowDate());
         return financeSalaryMapper.insertFinanceSalary(financeSalary);
     }
@@ -65,8 +61,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService
      * @return 结果
      */
     @Override
-    public int updateFinanceSalary(FinanceSalary financeSalary)
-    {
+    public int updateFinanceSalary(FinanceSalary financeSalary) {
         financeSalary.setUpdateTime(DateUtils.getNowDate());
         return financeSalaryMapper.updateFinanceSalary(financeSalary);
     }
@@ -78,8 +73,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService
      * @return 结果
      */
     @Override
-    public int deleteFinanceSalaryByIds(Long[] ids)
-    {
+    public int deleteFinanceSalaryByIds(Long[] ids) {
         return financeSalaryMapper.deleteFinanceSalaryByIds(ids);
     }
 
@@ -90,8 +84,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService
      * @return 结果
      */
     @Override
-    public int deleteFinanceSalaryById(Long id)
-    {
+    public int deleteFinanceSalaryById(Long id) {
         return financeSalaryMapper.deleteFinanceSalaryById(id);
     }
 }

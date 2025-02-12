@@ -2,11 +2,10 @@ package com.kkyu.common.enums;
 
 /**
  * 数据源
- * 
+ *
  * @author kkyu
  */
-public enum DataSourceType
-{
+public enum DataSourceType {
     /**
      * 主库
      */

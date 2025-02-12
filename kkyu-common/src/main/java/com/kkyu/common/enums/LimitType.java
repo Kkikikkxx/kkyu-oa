@@ -6,8 +6,7 @@ package com.kkyu.common.enums;
  * @author kkyu
  */
 
-public enum LimitType
-{
+public enum LimitType {
     /**
      * 默认策略全局限流
      */

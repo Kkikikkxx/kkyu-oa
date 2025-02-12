@@ -2,12 +2,10 @@ package com.kkyu.common.enums;
 
 /**
  * 操作状态
- * 
- * @author kkyu
  *
+ * @author kkyu
  */
-public enum BusinessStatus
-{
+public enum BusinessStatus {
     /**
      * 成功
      */

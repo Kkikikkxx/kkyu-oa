@@ -5,28 +5,39 @@
 <mapper namespace="com.kkyu.finance.mapper.FinanceSalaryMapper">
 
     <resultMap type="FinanceSalary" id="FinanceSalaryResult">
-        <result property="id"    column="id"    />
-        <result property="employeeId"    column="employee_id"    />
-        <result property="baseSalary"    column="base_salary"    />
-        <result property="bonus"    column="bonus"    />
-        <result property="deductions"    column="deductions"    />
-        <result property="netSalary"    column="net_salary"    />
-        <result property="createBy"    column="create_by"    />
-        <result property="createTime"    column="create_time"    />
-        <result property="updateBy"    column="update_by"    />
-        <result property="updateTime"    column="update_time"    />
-        <result property="remark"    column="remark"    />
+        <result property="id" column="id"/>
+        <result property="employeeId" column="employee_id"/>
+        <result property="baseSalary" column="base_salary"/>
+        <result property="bonus" column="bonus"/>
+        <result property="deductions" column="deductions"/>
+        <result property="netSalary" column="net_salary"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
     </resultMap>
 
     <sql id="selectFinanceSalaryVo">
-        select id, employee_id, base_salary, bonus, deductions, net_salary, create_by, create_time, update_by, update_time, remark from finance_salary
+        select id,
+               employee_id,
+               base_salary,
+               bonus,
+               deductions,
+               net_salary,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               remark
+        from finance_salary
     </sql>
 
     <select id="selectFinanceSalaryList" parameterType="FinanceSalary" resultMap="FinanceSalaryResult">
         <include refid="selectFinanceSalaryVo"/>
         <where>
-            <if test="employeeId != null "> and employee_id = #{employeeId}</if>
-            <if test="baseSalary != null "> and base_salary = #{baseSalary}</if>
+            <if test="employeeId != null ">and employee_id = #{employeeId}</if>
+            <if test="baseSalary != null ">and base_salary = #{baseSalary}</if>
         </where>
     </select>
 
@@ -81,7 +92,9 @@
     </update>
 
     <delete id="deleteFinanceSalaryById" parameterType="Long">
-        delete from finance_salary where id = #{id}
+        delete
+        from finance_salary
+        where id = #{id}
     </delete>
 
     <delete id="deleteFinanceSalaryByIds" parameterType="String">

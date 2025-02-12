@@ -1,27 +1,19 @@
 package com.kkyu.finance.controller;
 
-import java.util.List;
-
 import com.kkyu.common.annotation.Log;
 import com.kkyu.common.core.controller.BaseController;
 import com.kkyu.common.core.domain.AjaxResult;
 import com.kkyu.common.core.page.TableDataInfo;
 import com.kkyu.common.enums.BusinessType;
 import com.kkyu.common.utils.poi.ExcelUtil;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.kkyu.finance.domain.FinanceSalary;
 import com.kkyu.finance.service.IFinanceSalaryService;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /**
@@ -31,8 +23,7 @@ import com.kkyu.finance.service.IFinanceSalaryService;
  */
 @RestController
 @RequestMapping("/finance/salary")
-public class FinanceSalaryController extends BaseController
-{
+public class FinanceSalaryController extends BaseController {
     @Autowired
     private IFinanceSalaryService financeSalaryService;
 
@@ -41,8 +32,7 @@ public class FinanceSalaryController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('finance:salary:list')")
     @GetMapping("/list")
-    public TableDataInfo list(FinanceSalary financeSalary)
-    {
+    public TableDataInfo list(FinanceSalary financeSalary) {
         startPage();
         List<FinanceSalary> list = financeSalaryService.selectFinanceSalaryList(financeSalary);
         return getDataTable(list);
@@ -54,8 +44,7 @@ public class FinanceSalaryController extends BaseController
     @PreAuthorize("@ss.hasPermi('finance:salary:export')")
     @Log(title = "薪资管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
-    public void export(HttpServletResponse response, FinanceSalary financeSalary)
-    {
+    public void export(HttpServletResponse response, FinanceSalary financeSalary) {
         List<FinanceSalary> list = financeSalaryService.selectFinanceSalaryList(financeSalary);
         ExcelUtil<FinanceSalary> util = new ExcelUtil<>(FinanceSalary.class);
         util.exportExcel(response, list, "薪资管理数据");
@@ -66,8 +55,7 @@ public class FinanceSalaryController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('finance:salary:query')")
     @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Long id)
-    {
+    public AjaxResult getInfo(@PathVariable("id") Long id) {
         return success(financeSalaryService.selectFinanceSalaryById(id));
     }
 
@@ -77,8 +65,7 @@ public class FinanceSalaryController extends BaseController
     @PreAuthorize("@ss.hasPermi('finance:salary:add')")
     @Log(title = "薪资管理", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody FinanceSalary financeSalary)
-    {
+    public AjaxResult add(@RequestBody FinanceSalary financeSalary) {
         return toAjax(financeSalaryService.insertFinanceSalary(financeSalary));
     }
 
@@ -88,8 +75,7 @@ public class FinanceSalaryController extends BaseController
     @PreAuthorize("@ss.hasPermi('finance:salary:edit')")
     @Log(title = "薪资管理", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult edit(@RequestBody FinanceSalary financeSalary)
-    {
+    public AjaxResult edit(@RequestBody FinanceSalary financeSalary) {
         return toAjax(financeSalaryService.updateFinanceSalary(financeSalary));
     }
 
@@ -98,9 +84,8 @@ public class FinanceSalaryController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('finance:salary:remove')")
     @Log(title = "薪资管理", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable Long[] ids)
-    {
+    @DeleteMapping("/{ids}")
+    public AjaxResult remove(@PathVariable Long[] ids) {
         return toAjax(financeSalaryService.deleteFinanceSalaryByIds(ids));
     }
 }
