@@ -1,9 +1,9 @@
 package com.kkyu.finance.mapper;
 
+import java.util.List;
+
 import com.kkyu.finance.domain.FinanceSalary;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 /**
  * 薪资管理Mapper接口

@@ -1,8 +1,8 @@
 package com.kkyu.finance.service;
 
-import com.kkyu.finance.domain.FinanceSalary;
-
 import java.util.List;
+
+import com.kkyu.finance.domain .FinanceSalary;
 
 /**
  * 薪资管理Service接口

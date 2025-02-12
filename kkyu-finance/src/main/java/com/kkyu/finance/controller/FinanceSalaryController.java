@@ -1,20 +1,26 @@
 package com.kkyu.finance.controller;
 
+import java.util.List;
+
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import com.kkyu.common.annotation.Log;
 import com.kkyu.common.core.controller.BaseController;
 import com.kkyu.common.core.domain.AjaxResult;
-import com.kkyu.common.core.page.TableDataInfo;
 import com.kkyu.common.enums.BusinessType;
-import com.kkyu.common.utils.poi.ExcelUtil;
 import com.kkyu.finance.domain.FinanceSalary;
 import com.kkyu.finance.service.IFinanceSalaryService;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
+import com.kkyu.common.utils.poi.ExcelUtil;
+import com.kkyu.common.core.page.TableDataInfo;
 
 /**
  * 薪资管理Controller
@@ -27,11 +33,11 @@ public class FinanceSalaryController extends BaseController {
     @Autowired
     private IFinanceSalaryService financeSalaryService;
 
-    /**
-     * 查询薪资管理列表
-     */
-    @PreAuthorize("@ss.hasPermi('finance:salary:list')")
-    @GetMapping("/list")
+/**
+ * 查询薪资管理列表
+ */
+@PreAuthorize("@ss.hasPermi('finance:salary:list')")
+@GetMapping("/list")
     public TableDataInfo list(FinanceSalary financeSalary) {
         startPage();
         List<FinanceSalary> list = financeSalaryService.selectFinanceSalaryList(financeSalary);
@@ -46,7 +52,7 @@ public class FinanceSalaryController extends BaseController {
     @PostMapping("/export")
     public void export(HttpServletResponse response, FinanceSalary financeSalary) {
         List<FinanceSalary> list = financeSalaryService.selectFinanceSalaryList(financeSalary);
-        ExcelUtil<FinanceSalary> util = new ExcelUtil<>(FinanceSalary.class);
+        ExcelUtil<FinanceSalary> util = new ExcelUtil<FinanceSalary>(FinanceSalary. class);
         util.exportExcel(response, list, "薪资管理数据");
     }
 

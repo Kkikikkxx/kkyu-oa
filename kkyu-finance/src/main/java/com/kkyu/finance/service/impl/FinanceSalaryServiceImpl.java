@@ -1,19 +1,17 @@
 package com.kkyu.finance.service.impl;
 
-import com.kkyu.common.utils.DateUtils;
-import com.kkyu.finance.domain.FinanceSalary;
-import com.kkyu.finance.mapper.FinanceSalaryMapper;
-import com.kkyu.finance.service.IFinanceSalaryService;
+import java.util.List;
+        import com.kkyu.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.kkyu.finance.mapper.FinanceSalaryMapper;
+import com.kkyu.finance.domain.FinanceSalary;
+import com.kkyu.finance.service.IFinanceSalaryService;
 
 /**
  * 薪资管理Service业务层处理
  *
  * @author kkyu
- * @date 2025-02-11
  */
 @Service
 public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
@@ -50,8 +48,8 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
      */
     @Override
     public int insertFinanceSalary(FinanceSalary financeSalary) {
-        financeSalary.setCreateTime(DateUtils.getNowDate());
-        return financeSalaryMapper.insertFinanceSalary(financeSalary);
+                financeSalary.setCreateTime(DateUtils.getNowDate());
+            return financeSalaryMapper.insertFinanceSalary(financeSalary);
     }
 
     /**
@@ -62,7 +60,7 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
      */
     @Override
     public int updateFinanceSalary(FinanceSalary financeSalary) {
-        financeSalary.setUpdateTime(DateUtils.getNowDate());
+                financeSalary.setUpdateTime(DateUtils.getNowDate());
         return financeSalaryMapper.updateFinanceSalary(financeSalary);
     }
 
