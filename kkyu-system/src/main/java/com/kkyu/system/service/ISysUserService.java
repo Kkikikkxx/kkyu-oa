@@ -203,4 +203,14 @@ public interface ISysUserService {
      * @return 结果
      */
     public String importUser(List<SysUser> userList, Boolean isUpdateSupport, String operName);
+
+    /**
+     * 获取所有用户数量
+     */
+    int countTotalUsers();
+
+    /**
+     * 获取离职员工数量
+     */
+    int countLeaveUsers();
 }

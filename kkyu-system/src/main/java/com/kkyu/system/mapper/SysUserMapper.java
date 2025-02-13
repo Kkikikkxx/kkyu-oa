@@ -2,6 +2,7 @@ package com.kkyu.system.mapper;
 
 import com.kkyu.common.core.domain.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -124,4 +125,16 @@ public interface SysUserMapper {
      * @return 结果
      */
     public SysUser checkEmailUnique(String email);
+
+    /**
+     * 查询用户总数
+     */
+    @Select("SELECT COUNT(*) FROM sys_user")
+    int selectTotalUserCount();
+
+    /**
+     * 获取离职员工数量
+     */
+    @Select("SELECT COUNT(*) FROM sys_user WHERE status = '1'")
+    int selectLeaveUserCount();
 }

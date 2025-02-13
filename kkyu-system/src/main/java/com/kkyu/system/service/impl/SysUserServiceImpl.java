@@ -482,4 +482,20 @@ public class SysUserServiceImpl implements ISysUserService {
         }
         return successMsg.toString();
     }
+
+    /**
+     * 获取员工数量
+     */
+    @Override
+    public int countTotalUsers() {
+        return userMapper.selectTotalUserCount();
+    }
+
+    /**
+     * 获取离职员工数量
+     */
+    @Override
+    public int countLeaveUsers() {
+        return userMapper.selectLeaveUserCount();
+    }
 }
