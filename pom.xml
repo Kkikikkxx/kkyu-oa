@@ -185,13 +185,6 @@
                 <version>${kkyu.version}</version>
             </dependency>
 
-            <!-- 员工管理-->
-            <dependency>
-                <groupId>com.kkyu</groupId>
-                <artifactId>kkyu-employee</artifactId>
-                <version>${kkyu.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -202,7 +195,6 @@
         <module>kkyu-generator</module>
         <module>kkyu-common</module>
         <module>kkyu-finance</module>
-        <module>kkyu-employee</module>
     </modules>
     <packaging>pom</packaging>
 
