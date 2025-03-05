@@ -1,7 +1,7 @@
 package com.kkyu.employee.service.impl;
 
 import java.util.List;
-        import com.kkyu.common.utils.DateUtils;
+import com.kkyu.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kkyu.employee.mapper.EmployeeMapper;
@@ -12,7 +12,6 @@ import com.kkyu.employee.service.IEmployeeService;
  * 员工档案管理Service业务层处理
  *
  * @author kkyu
- * @date 2025-03-05
  */
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -49,8 +48,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
      */
     @Override
     public int insertEmployee(Employee employee) {
-                employee.setCreateTime(DateUtils.getNowDate());
-            return employeeMapper.insertEmployee(employee);
+        employee.setCreateTime(DateUtils.getNowDate());
+        return employeeMapper.insertEmployee(employee);
     }
 
     /**
@@ -61,7 +60,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
      */
     @Override
     public int updateEmployee(Employee employee) {
-                employee.setUpdateTime(DateUtils.getNowDate());
+        employee.setUpdateTime(DateUtils.getNowDate());
         return employeeMapper.updateEmployee(employee);
     }
 

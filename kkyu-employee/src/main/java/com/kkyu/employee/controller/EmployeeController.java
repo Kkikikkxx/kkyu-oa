@@ -26,7 +26,6 @@ import com.kkyu.common.core.page.TableDataInfo;
  * 员工档案管理Controller
  *
  * @author kkyu
- * @date 2025-03-05
  */
 @RestController
 @RequestMapping("/employee/archives")
@@ -34,11 +33,11 @@ public class EmployeeController extends BaseController {
     @Autowired
     private IEmployeeService employeeService;
 
-/**
- * 查询员工档案管理列表
- */
-@PreAuthorize("@ss.hasPermi('employee:archives:list')")
-@GetMapping("/list")
+    /**
+     * 查询员工档案管理列表
+     */
+    @PreAuthorize("@ss.hasPermi('employee:archives:list')")
+    @GetMapping("/list")
     public TableDataInfo list(Employee employee) {
         startPage();
         List<Employee> list = employeeService.selectEmployeeList(employee);
