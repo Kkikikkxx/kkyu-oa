@@ -54,6 +54,13 @@
             <artifactId>kkyu-finance</artifactId>
         </dependency>
 
+        <!-- 员工管理-->
+        <dependency>
+            <groupId>com.kkyu</groupId>
+            <artifactId>kkyu-employee</artifactId>
+            <version>${kkyu.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

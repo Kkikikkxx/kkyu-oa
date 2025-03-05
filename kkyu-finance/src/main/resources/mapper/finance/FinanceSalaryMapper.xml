@@ -5,7 +5,7 @@
 <mapper namespace="com.kkyu.finance.mapper.FinanceSalaryMapper">
 
     <resultMap type="FinanceSalary" id="FinanceSalaryResult">
-        <result property="id" column="id"/>
+        <result property="salaryId" column="salary_id"/>
         <result property="employeeName" column="employee_name"/>
         <result property="baseSalary" column="base_salary"/>
         <result property="bonus" column="bonus"/>
@@ -19,7 +19,7 @@
     </resultMap>
 
     <sql id="selectFinanceSalaryVo">
-        select id, employee_name, base_salary, bonus, deductions, net_salary, create_by, create_time, update_by, update_time, remark
+        select salary_id, employee_name, base_salary, bonus, deductions, net_salary, create_by, create_time, update_by, update_time, remark
         from finance_salary
     </sql>
 
@@ -29,23 +29,20 @@
             <if test="employeeName != null  and employeeName != ''">
                 and employee_name like concat('%', #{employeeName}, '%')
             </if>
-            <if test="baseSalary != null ">
-                and base_salary = #{baseSalary}
-            </if>
             <if test="remark != null  and remark != ''">
-                and remark like concat('%', #{remark}, '%')
+                and remark = #{remark}
             </if>
         </where>
     </select>
 
-    <select id="selectFinanceSalaryById" parameterType="Long"
+    <select id="selectFinanceSalaryBySalaryId" parameterType="Long"
             resultMap="FinanceSalaryResult">
         <include refid="selectFinanceSalaryVo"/>
-        where id = #{id}
+        where salary_id = #{salaryId}
     </select>
 
     <insert id="insertFinanceSalary" parameterType="FinanceSalary" useGeneratedKeys="true"
-            keyProperty="id">
+            keyProperty="salaryId">
         insert into finance_salary
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="employeeName != null and employeeName != ''">employee_name,
@@ -66,7 +63,7 @@
             </if>
             <if test="updateTime != null">update_time,
             </if>
-            <if test="remark != null">remark,
+            <if test="remark != null and remark != ''">remark,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -88,7 +85,7 @@
             </if>
             <if test="updateTime != null">#{updateTime},
             </if>
-            <if test="remark != null">#{remark},
+            <if test="remark != null and remark != ''">#{remark},
             </if>
         </trim>
     </insert>
@@ -123,22 +120,22 @@
             <if test="updateTime != null">update_time =
                 #{updateTime},
             </if>
-            <if test="remark != null">remark =
+            <if test="remark != null and remark != ''">remark =
                 #{remark},
             </if>
         </trim>
-        where id = #{id}
+        where salary_id = #{salaryId}
     </update>
 
-    <delete id="deleteFinanceSalaryById" parameterType="Long">
+    <delete id="deleteFinanceSalaryBySalaryId" parameterType="Long">
         delete
-        from finance_salary where id = #{id}
+        from finance_salary where salary_id = #{salaryId}
     </delete>
 
-    <delete id="deleteFinanceSalaryByIds" parameterType="String">
-        delete from finance_salary where id in
-        <foreach item="id" collection="array" open="(" separator="," close=")">
-            #{id}
+    <delete id="deleteFinanceSalaryBySalaryIds" parameterType="String">
+        delete from finance_salary where salary_id in
+        <foreach item="salaryId" collection="array" open="(" separator="," close=")">
+            #{salaryId}
         </foreach>
     </delete>
 </mapper>

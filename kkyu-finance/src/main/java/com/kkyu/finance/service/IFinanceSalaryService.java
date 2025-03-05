@@ -13,10 +13,10 @@ public interface IFinanceSalaryService {
     /**
      * 查询薪资管理
      *
-     * @param id 薪资管理主键
+     * @param salaryId 薪资管理主键
      * @return 薪资管理
      */
-    public FinanceSalary selectFinanceSalaryById(Long id);
+    public FinanceSalary selectFinanceSalaryBySalaryId(Long salaryId);
 
     /**
      * 查询薪资管理列表
@@ -45,16 +45,16 @@ public interface IFinanceSalaryService {
     /**
      * 批量删除薪资管理
      *
-     * @param ids 需要删除的薪资管理主键集合
+     * @param salaryIds 需要删除的薪资管理主键集合
      * @return 结果
      */
-    public int deleteFinanceSalaryByIds(Long[] ids);
+    public int deleteFinanceSalaryBySalaryIds(Long[] salaryIds);
 
     /**
      * 删除薪资管理信息
      *
-     * @param id 薪资管理主键
+     * @param salaryId 薪资管理主键
      * @return 结果
      */
-    public int deleteFinanceSalaryById(Long id);
+    public int deleteFinanceSalaryBySalaryId(Long salaryId);
 }

@@ -33,11 +33,11 @@ public class FinanceSalaryController extends BaseController {
     @Autowired
     private IFinanceSalaryService financeSalaryService;
 
-/**
- * 查询薪资管理列表
- */
-@PreAuthorize("@ss.hasPermi('finance:salary:list')")
-@GetMapping("/list")
+    /**
+     * 查询薪资管理列表
+     */
+    @PreAuthorize("@ss.hasPermi('finance:salary:list')")
+    @GetMapping("/list")
     public TableDataInfo list(FinanceSalary financeSalary) {
         startPage();
         List<FinanceSalary> list = financeSalaryService.selectFinanceSalaryList(financeSalary);
@@ -60,9 +60,9 @@ public class FinanceSalaryController extends BaseController {
      * 获取薪资管理详细信息
      */
     @PreAuthorize("@ss.hasPermi('finance:salary:query')")
-    @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Long id) {
-        return success(financeSalaryService.selectFinanceSalaryById(id));
+    @GetMapping(value = "/{salaryId}")
+    public AjaxResult getInfo(@PathVariable("salaryId") Long salaryId) {
+        return success(financeSalaryService.selectFinanceSalaryBySalaryId(salaryId));
     }
 
     /**
@@ -90,8 +90,8 @@ public class FinanceSalaryController extends BaseController {
      */
     @PreAuthorize("@ss.hasPermi('finance:salary:remove')")
     @Log(title = "薪资管理", businessType = BusinessType.DELETE)
-    @DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable Long[] ids) {
-        return toAjax(financeSalaryService.deleteFinanceSalaryByIds(ids));
+    @DeleteMapping("/{salaryIds}")
+    public AjaxResult remove(@PathVariable Long[] salaryIds) {
+        return toAjax(financeSalaryService.deleteFinanceSalaryBySalaryIds(salaryIds));
     }
 }

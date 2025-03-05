@@ -11,80 +11,80 @@ import com.kkyu.common.core.domain.BaseEntity;
  *
  * @author kkyu
  */
-        public class FinanceSalary extends BaseEntity
-        {
-        private static final long serialVersionUID = 1L;
+public class FinanceSalary extends BaseEntity
+{
+    private static final long serialVersionUID = 1L;
 
-                /** 主键ID */
-        private Long id;
+    /** 主键ID */
+    private Long salaryId;
 
-                /** 员工姓名 */
-                @Excel(name = "员工姓名")
-        private String employeeName;
+    /** 员工姓名 */
+    @Excel(name = "员工姓名")
+    private String employeeName;
 
-                /** 基本工资 */
-                @Excel(name = "基本工资")
-        private BigDecimal baseSalary;
+    /** 基本工资 */
+    @Excel(name = "基本工资")
+    private BigDecimal baseSalary;
 
-                /** 奖金 */
-                @Excel(name = "奖金")
-        private BigDecimal bonus;
+    /** 奖金 */
+    @Excel(name = "奖金")
+    private BigDecimal bonus;
 
-                /** 扣除项 */
-                @Excel(name = "扣除项")
-        private BigDecimal deductions;
+    /** 扣除项 */
+    @Excel(name = "扣除项")
+    private BigDecimal deductions;
 
-                /** 实发工资 */
-                @Excel(name = "实发工资")
-        private BigDecimal netSalary;
+    /** 实发工资 */
+    @Excel(name = "实发工资")
+    private BigDecimal netSalary;
 
-                public void setId(Long id) {
-                    this.id = id;
-                }
+    public void setSalaryId(Long salaryId) {
+        this.salaryId = salaryId;
+    }
 
-                public Long getId() {
-                    return id;
-                }
-                public void setEmployeeName(String employeeName) {
-                    this.employeeName = employeeName;
-                }
+    public Long getSalaryId() {
+        return salaryId;
+    }
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
 
-                public String getEmployeeName() {
-                    return employeeName;
-                }
-                public void setBaseSalary(BigDecimal baseSalary) {
-                    this.baseSalary = baseSalary;
-                }
+    public String getEmployeeName() {
+        return employeeName;
+    }
+    public void setBaseSalary(BigDecimal baseSalary) {
+        this.baseSalary = baseSalary;
+    }
 
-                public BigDecimal getBaseSalary() {
-                    return baseSalary;
-                }
-                public void setBonus(BigDecimal bonus) {
-                    this.bonus = bonus;
-                }
+    public BigDecimal getBaseSalary() {
+        return baseSalary;
+    }
+    public void setBonus(BigDecimal bonus) {
+        this.bonus = bonus;
+    }
 
-                public BigDecimal getBonus() {
-                    return bonus;
-                }
-                public void setDeductions(BigDecimal deductions) {
-                    this.deductions = deductions;
-                }
+    public BigDecimal getBonus() {
+        return bonus;
+    }
+    public void setDeductions(BigDecimal deductions) {
+        this.deductions = deductions;
+    }
 
-                public BigDecimal getDeductions() {
-                    return deductions;
-                }
-                public void setNetSalary(BigDecimal netSalary) {
-                    this.netSalary = netSalary;
-                }
+    public BigDecimal getDeductions() {
+        return deductions;
+    }
+    public void setNetSalary(BigDecimal netSalary) {
+        this.netSalary = netSalary;
+    }
 
-                public BigDecimal getNetSalary() {
-                    return netSalary;
-                }
+    public BigDecimal getNetSalary() {
+        return netSalary;
+    }
 
-        @Override
-        public String toString() {
-            return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("id", getId())
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("salaryId", getSalaryId())
                 .append("employeeName", getEmployeeName())
                 .append("baseSalary", getBaseSalary())
                 .append("bonus", getBonus())
@@ -95,6 +95,6 @@ import com.kkyu.common.core.domain.BaseEntity;
                 .append("updateBy", getUpdateBy())
                 .append("updateTime", getUpdateTime())
                 .append("remark", getRemark())
-                    .toString();
-        }
+                .toString();
+    }
 }

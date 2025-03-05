@@ -21,12 +21,12 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
     /**
      * 查询薪资管理
      *
-     * @param id 薪资管理主键
+     * @param salaryId 薪资管理主键
      * @return 薪资管理
      */
     @Override
-    public FinanceSalary selectFinanceSalaryById(Long id) {
-        return financeSalaryMapper.selectFinanceSalaryById(id);
+    public FinanceSalary selectFinanceSalaryBySalaryId(Long salaryId) {
+        return financeSalaryMapper.selectFinanceSalaryBySalaryId(salaryId);
     }
 
     /**
@@ -48,8 +48,8 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
      */
     @Override
     public int insertFinanceSalary(FinanceSalary financeSalary) {
-                financeSalary.setCreateTime(DateUtils.getNowDate());
-            return financeSalaryMapper.insertFinanceSalary(financeSalary);
+        financeSalary.setCreateTime(DateUtils.getNowDate());
+        return financeSalaryMapper.insertFinanceSalary(financeSalary);
     }
 
     /**
@@ -60,29 +60,29 @@ public class FinanceSalaryServiceImpl implements IFinanceSalaryService {
      */
     @Override
     public int updateFinanceSalary(FinanceSalary financeSalary) {
-                financeSalary.setUpdateTime(DateUtils.getNowDate());
+        financeSalary.setUpdateTime(DateUtils.getNowDate());
         return financeSalaryMapper.updateFinanceSalary(financeSalary);
     }
 
     /**
      * 批量删除薪资管理
      *
-     * @param ids 需要删除的薪资管理主键
+     * @param salaryIds 需要删除的薪资管理主键
      * @return 结果
      */
     @Override
-    public int deleteFinanceSalaryByIds(Long[] ids) {
-        return financeSalaryMapper.deleteFinanceSalaryByIds(ids);
+    public int deleteFinanceSalaryBySalaryIds(Long[] salaryIds) {
+        return financeSalaryMapper.deleteFinanceSalaryBySalaryIds(salaryIds);
     }
 
     /**
      * 删除薪资管理信息
      *
-     * @param id 薪资管理主键
+     * @param salaryId 薪资管理主键
      * @return 结果
      */
     @Override
-    public int deleteFinanceSalaryById(Long id) {
-        return financeSalaryMapper.deleteFinanceSalaryById(id);
+    public int deleteFinanceSalaryBySalaryId(Long salaryId) {
+        return financeSalaryMapper.deleteFinanceSalaryBySalaryId(salaryId);
     }
 }
